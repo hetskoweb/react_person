@@ -1,15 +1,17 @@
 /* eslint-disable no-nested-ternary */
 // export const Person = ({ person }) => ();
-export const Person = ({ person }) => (
+export const Person = ({
+  person: { name, age, partnerName, sex, isMarried },
+}) => (
   <section className="Person">
-    <h2 className="Person__name">{`My name is ${person.name}`}</h2>
-    {person.age && <p className="Person__age">{`I am ${person.age}`}</p>}
+    <h2 className="Person__name">{`My name is ${name}`}</h2>
+    {age && <p className="Person__age">{`I am ${age}`}</p>}
     <p className="Person__partner">
-      {person.sex === 'm'
-        ? `${person.partnerName} is my wife`
-        : person.sex === 'f'
-          ? `${person.partnerName} is my husband`
-          : 'I am not married'}
+      {!isMarried
+        ? 'I am not married'
+        : sex === 'm'
+          ? `${partnerName} is my wife`
+          : `${partnerName} is my husband`}
     </p>
   </section>
 );
